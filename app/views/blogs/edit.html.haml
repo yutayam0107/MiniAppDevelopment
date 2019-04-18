@@ -1,0 +1,12 @@
+%body
+  %div.header
+    編集画面
+  %div.contents__one  
+    = form_for @messsage ,:url => {:action => 'update'} do |f|
+      = f.text_field :text, name:"text",placeholder: "修正内容を入力せよ",class:"contents__one__textfield"
+      = f.submit value:"修正完了。",action:"/blogs/update", method:"patch",class:"contents__one__field"
+
+
+
+
+

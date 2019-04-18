@@ -1,0 +1,11 @@
+%div.unit
+  %div.unit__functions
+    - if user_signed_in? && current_user.id == message.user_id
+      %div.unit__functions__list
+        = link_to '削除', "/blogs/#{message.id}", method: :delete
+      %div.unit__functions__list
+        = link_to '編集', "/blogs/#{message.id}/edit", method: :get
+    %div.unit__functions__list__username
+      = link_to "#{message.user.username}", "/blogs/#{message.id}",style:"text-decoration:none;color:black;"
+  %div.unit__main
+    = message.text

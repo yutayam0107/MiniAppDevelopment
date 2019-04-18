@@ -1,0 +1,26 @@
+!!!
+%html
+%head
+
+%body
+  %div.header
+    %div.header__left
+      ブログ課題
+    - if user_signed_in?
+      %div.header__right__list
+        = link_to "ログアウト", destroy_user_session_path, method: :delete,:style=>"color:red;",class:"header__right__list__button",style:"text-decoration:none;"
+      %div.header__right__list
+        = link_to "投稿する", "blogs/new", method: 'get',class:"header__right__list__button",style:"text-decoration:none;"
+    - else
+      %div.header__right__list
+        = link_to "ログイン", new_user_session_path, method: 'post',class:"header__right__list__button",style:"text-decoration:none;"
+      %div.header__right__list
+        = link_to "新規登録", new_user_registration_path, method: 'get',class:"header__right__list__button",style:"text-decoration:none;"
+  %div.contents
+    %div.contents__middle
+      - @messages.each do |message|
+        = render "blog", message: message
+  %div.footer
+    %div.footer.pageparent
+      %div.footer__pageparent__page
+        = paginate(@messages)

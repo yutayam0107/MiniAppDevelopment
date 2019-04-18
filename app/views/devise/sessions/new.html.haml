@@ -1,0 +1,17 @@
+%body
+  %div.header
+    ログイン
+  %div.contents__one
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field
+        = f.label :email,class:"contents__one__field"
+        = f.email_field :email, autofocus: true, autocomplete: "email",class:"contents__one__field"
+      .field
+        = f.label :password,class:"contents__one__field"
+        = f.password_field :password, autocomplete: "current-password",class:"contents__one__field"
+      - if devise_mapping.rememberable?
+        .field
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .actions
+        = f.submit value:"ログイン",class:"contents__one__field"

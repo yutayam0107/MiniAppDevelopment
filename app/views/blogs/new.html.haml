@@ -1,0 +1,7 @@
+%body
+  %div.header
+    新規投稿画面
+  %div.contents__one  
+    = form_for @user ,:url => {:action => 'create'} do |f|
+      = f.text_field :text, class:"contents__one__textfield",name:"text",placeholder: "本文入力",maxlength:400,size:100
+      = f.submit value:"投稿する",action:"/blogs/create",method:"post",class:"contents__one__field"
